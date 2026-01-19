@@ -15,6 +15,8 @@ int main() {
     int windowWidth = 640;
     int windowHeight = 480;
     Color backgroundColor = DARKBLUE;
+    int score = 0;
+    bool spawnItems = false;
 
     struct collision_struct {
         float radius;
@@ -40,6 +42,11 @@ int main() {
         player_boat player;
     } typedef debris;
 
+    struct target_struct {
+        Vector2 position;
+        collision_shape collision;
+    } typedef target;
+
     bool isAttached = false;
     Vector2 boat_to_debris = Vector2Zero();
 
@@ -51,6 +58,8 @@ int main() {
     Vector2 island_to_boat = Vector2(0, 0);
 
     debris newDebris = {{windowWidth / 4.0f * 3, windowHeight / 4.0f}, {0, 0}, 0, 0, 0, {25, {0, 0, 255, 175}} };
+
+    target newTarget = {{windowWidth / 4.0f, windowHeight / 4.0f * 3}, {30, {0, 175, 0, 75}}};
 
     // Loop
     while (WindowShouldClose() == false) {
@@ -80,6 +89,35 @@ int main() {
         if (CheckCollisionCircles(boat.position, boat.collision.radius, newDebris.position, newDebris.collision.radius)) {
             Vector2 collisionVector = Vector2Subtract(boat.position, newDebris.position);
             boat.velocity = Vector2Add(boat.velocity, collisionVector);
+        }
+
+        if (CheckCollisionPointCircle(newDebris.position, newTarget.position, newTarget.collision.radius)) {
+            score += 1;
+            int new_x, new_y;
+            do {
+                isAttached = false;
+                new_x = rand() % ((windowWidth - 25) - (25) + 1) + 25;
+                new_y = rand() % ((windowHeight - 25) - (25) + 1) + 25;
+                newDebris.position.x = new_x;
+                newDebris.position.y = new_y;
+                newDebris.velocity = Vector2Zero();
+            } while (CheckCollisionCircles(boat.position, boat.collision.radius, newDebris.position,
+                                            newDebris.collision.radius));
+            do {
+                new_x = rand() % ((windowWidth - 25) - (25) + 1) + 25;
+                new_y = rand() % ((windowHeight - 25) - (25) + 1) + 25;
+                newTarget.position.x = new_x;
+                newTarget.position.y = new_y;
+            } while (CheckCollisionCircles(newTarget.position, newTarget.collision.radius, newDebris.position,
+                                            newDebris.collision.radius));
+            do {
+                new_x = rand() % ((windowWidth - 25) - (25) + 1) + 25;
+                new_y = rand() % ((windowHeight - 25) - (25) + 1) + 25;
+                island.x = new_x;
+                island.y = new_y;
+            } while (CheckCollisionCircleRec(boat.position, boat.collision.radius, island)
+                || CheckCollisionCircleRec(newTarget.position, newTarget.collision.radius, island)
+                || CheckCollisionCircleRec(newDebris.position, newDebris.collision.radius, island));
         }
 
 
@@ -118,8 +156,15 @@ int main() {
         DrawCircle(newDebris.position.x, newDebris.position.y, 20, GREEN);
         DrawCircle(newDebris.position.x, newDebris.position.y, newDebris.collision.radius, newDebris.collision.color);
 
+        // Draw Target
+        DrawCircle(newTarget.position.x, newTarget.position.y, newTarget.collision.radius, newTarget.collision.color);
+
         // Draw connection
         if (isAttached) DrawLineV(boat.position, newDebris.position, RED);
+
+        char str[32];
+        sprintf(str, "Cargo Moved: %d", score);
+        DrawText(str, windowWidth / 2 - 75, 0, 20, BLACK);
 
         // debug
         if (false) {

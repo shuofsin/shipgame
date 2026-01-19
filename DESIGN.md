@@ -10,7 +10,7 @@ exists solely for the purposes of beginning execution.
 
 On a broader level, nodes will be divided into three types: 
 - Manager nodes, which are not drawn and exist solely to preform behind-the-scenes logic, i.e. moving the game state from the paused to unpaused. 
-- Object nodes, which are drawn and represent diegetic aspects of the game world. If it has physics/collisions, it's an object node. 
+- Physics nodes, which are drawn and represent diegetic aspects of the game world. If it has physics/collisions, it's an object node. 
 - Interface nodes, which are drawn but represent non-diegetic aspects of the game world. The UI is made up entirely of interface nodes. (This will *hopefully* be implemented with the CLAY library)
 
 Runtime nodes will be executed on top of a database, which stores all immutable data. The implementation has yet to be learned. 
