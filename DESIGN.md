@@ -18,3 +18,62 @@ Runtime nodes will be executed on top of a database, which stores all immutable 
 ### Visual Representation 
 
 ![codearchmockup.png](codearchmockup.png)
+
+
+## Object Classes
+
+### Node 
+- Variables
+  - Node[] children
+- Functions
+  - void init()
+  - void update(dt)
+  - void draw()
+
+### PhysicsNode : Node
+- Variables
+  - Vector2 position
+  - Vector2 velocity
+  - Node parent
+- Functions
+  - void moveAndCollide(dt)
+  - void moveAndSlide(dt)
+
+### CollisionNode : PhysicsNode 
+- Variables
+  - Shape collisionShape
+  - ...TBD
+- Functions
+  - ...TBD
+
+### ManagerNode : Node
+- Variables
+  - Node parent
+  - ...TBD
+- Functions
+  - ...TBD
+
+### InterfaceNode : Node
+- Variables 
+  - Node Parent
+  - ...TBD
+- Functions
+  - ...TBD
+
+## Structs 
+
+### Circle
+- int x 
+- int y
+- float raidus
+
+### Rect (predefined in raylib)
+- int x
+- int y
+- int width
+- int height
+
+### Shape
+- Union of: 
+  - Circle
+  - Rect

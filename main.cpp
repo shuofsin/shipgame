@@ -52,7 +52,7 @@ int main() {
 
     // Init
     InitWindow(windowWidth, windowHeight, "ship game");
-    player_boat boat = {{windowWidth / 2.0f, windowHeight / 2.0f}, {0, 0}, 100, 50, 0, {25, {0, 0, 255, 175}}};
+    player_boat boat = {{windowWidth / 2.0f, windowHeight / 2.0f}, {0, 0}, 100, 75, 0, {25, {0, 0, 255, 175}}};
     Rectangle boat_rect = {boat.position.x, boat.position.y, 40, 20};
     Rectangle island = {windowWidth / 4.0f, windowHeight / 4.0f, 50, 50};
     Vector2 island_to_boat = Vector2(0, 0);
@@ -65,7 +65,7 @@ int main() {
     while (WindowShouldClose() == false) {
         // Update
         int turnDirection = IsKeyDown(KEY_D) - IsKeyDown(KEY_A);
-        boat.angle += IsKeyDown(KEY_W) * turnDirection * boat.turnSpeed * GetFrameTime();
+        boat.angle += turnDirection * boat.turnSpeed * GetFrameTime();
         float dx = boat.moveSpeed * cos(boat.angle*DEG2RAD);
         float dy = boat.moveSpeed * sin(boat.angle*DEG2RAD);
 
@@ -122,8 +122,8 @@ int main() {
 
 
         boat_to_debris = Vector2Subtract(boat.position, newDebris.position);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), newDebris.position, 20)
-            && Vector2Length(boat_to_debris) < 125) {
+        if (((IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), newDebris.position, 20))
+            || IsKeyPressed(KEY_SPACE)) && (Vector2Length(boat_to_debris) < 125)) {
             isAttached = !isAttached;
         }
 
