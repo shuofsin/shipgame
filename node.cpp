@@ -7,7 +7,9 @@
 /**
  * @brief Default constructor
  */
-Node::Node() = default;
+Node::Node() {
+    children = std::list<Node>();
+}
 
 /**
  * @brief Initialize all children
@@ -35,4 +37,11 @@ void Node::draw() {
     for (Node node : children) {
         node.draw();
     }
+}
+
+/**
+ * @return A list of this node's children
+ */
+std::list<Node>& Node::getChildren() {
+    return children;
 }

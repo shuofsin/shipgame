@@ -7,6 +7,8 @@ find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
 add_executable(shipgame node.cpp node.h main.cpp
+        physicsnode.cpp
+        physicsnode.h
 )
 
 target_link_libraries(shipgame PRIVATE raylib)
