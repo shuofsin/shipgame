@@ -1,9 +1,4 @@
-#include <complex>
-#include <raylib.h>
-#include <raymath.h>
-#include <cstdio>
-
-#include "node.h"
+#include "global.h"
 
 void debug(bool isDebug);
 
@@ -55,7 +50,7 @@ int main() {
     player_boat boat = {{windowWidth / 2.0f, windowHeight / 2.0f}, {0, 0}, 100, 75, 0, {25, {0, 0, 255, 175}}};
     Rectangle boat_rect = {boat.position.x, boat.position.y, 40, 20};
     Rectangle island = {windowWidth / 4.0f, windowHeight / 4.0f, 50, 50};
-    Vector2 island_to_boat = Vector2(0, 0);
+    Vector2 island_to_boat = Vector2Zero();
 
     debris newDebris = {{windowWidth / 4.0f * 3, windowHeight / 4.0f}, {0, 0}, 0, 0, 0, {25, {0, 0, 255, 175}} };
 
@@ -70,11 +65,11 @@ int main() {
         float dy = boat.moveSpeed * sin(boat.angle*DEG2RAD);
 
         if (IsKeyDown(KEY_W)) {
-            boat.velocity.x = lerp(boat.velocity.x, dx, 1 - pow(0.5f, GetFrameTime() * 0.8f));
-            boat.velocity.y = lerp(boat.velocity.y, dy, 1 - pow(0.5f, GetFrameTime() * 0.8f));
+            boat.velocity.x = Lerp(boat.velocity.x, dx, 1 - pow(0.5f, GetFrameTime() * 0.8f));
+            boat.velocity.y = Lerp(boat.velocity.y, dy, 1 - pow(0.5f, GetFrameTime() * 0.8f));
         } else {
-            boat.velocity.x = lerp(boat.velocity.x, 0, 1 - pow(0.5f, GetFrameTime() * 0.8f));
-            boat.velocity.y = lerp(boat.velocity.y, 0, 1 - pow(0.5f, GetFrameTime() * 0.8f));
+            boat.velocity.x = Lerp(boat.velocity.x, 0, 1 - pow(0.5f, GetFrameTime() * 0.8f));
+            boat.velocity.y = Lerp(boat.velocity.y, 0, 1 - pow(0.5f, GetFrameTime() * 0.8f));
         }
 
         boat.position.x += boat.velocity.x * GetFrameTime();
@@ -82,7 +77,7 @@ int main() {
 
         // Check if colliding, if so, bounce
         if (CheckCollisionCircleRec(boat.position, boat.collision.radius, island)) {
-            island_to_boat = Vector2Subtract(boat.position, Vector2(island.x, island.y));
+            island_to_boat = Vector2Subtract(boat.position, {island.x, island.y});
             boat.velocity = Vector2Add(boat.velocity, island_to_boat);
         }
 
@@ -130,11 +125,11 @@ int main() {
         if (isAttached && Vector2Length(boat_to_debris) > 100) {
             float dx = boat_to_debris.x;
             float dy = boat_to_debris.y;
-            newDebris.velocity.x = lerp(newDebris.velocity.x, dx, 1 - pow(0.5f, GetFrameTime() * 0.9f));
-            newDebris.velocity.y = lerp(newDebris.velocity.y, dy, 1 - pow(0.5f, GetFrameTime() * 0.9f));
+            newDebris.velocity.x = Lerp(newDebris.velocity.x, dx, 1 - pow(0.5f, GetFrameTime() * 0.9f));
+            newDebris.velocity.y = Lerp(newDebris.velocity.y, dy, 1 - pow(0.5f, GetFrameTime() * 0.9f));
         } else {
-            newDebris.velocity.x = lerp(newDebris.velocity.x, 0, 1 - pow(0.5f, GetFrameTime() * 0.9f));
-            newDebris.velocity.y = lerp(newDebris.velocity.y, 0, 1 - pow(0.5f, GetFrameTime() * 0.9f));
+            newDebris.velocity.x = Lerp(newDebris.velocity.x, 0, 1 - pow(0.5f, GetFrameTime() * 0.9f));
+            newDebris.velocity.y = Lerp(newDebris.velocity.y, 0, 1 - pow(0.5f, GetFrameTime() * 0.9f));
         }
 
         newDebris.position.x += newDebris.velocity.x * GetFrameTime();
@@ -146,7 +141,7 @@ int main() {
 
         // Draw boat
         boat_rect = {boat.position.x, boat.position.y, 40, 20};
-        DrawRectanglePro(boat_rect, Vector2(20, 10), boat.angle, WHITE);
+        DrawRectanglePro(boat_rect, {20, 10}, boat.angle, WHITE);
         DrawCircle(boat.position.x, boat.position.y, boat.collision.radius, boat.collision.color);
 
         // Draw island

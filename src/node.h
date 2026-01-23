@@ -2,10 +2,10 @@
 // Created by shu on 1/14/26.
 //
 
-#include <list>
-
 #ifndef SHIPGAME_NODE_H
 #define SHIPGAME_NODE_H
+
+#include "global.h"
 
 /**
  * @class Node

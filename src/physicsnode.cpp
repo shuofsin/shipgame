@@ -4,7 +4,6 @@
 
 #include "physicsnode.h"
 
-
 PhysicsNode::PhysicsNode() {
     children = std::list<Node>();
     position = Vector2();

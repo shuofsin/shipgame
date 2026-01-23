@@ -4,10 +4,9 @@
 
 #ifndef SHIPGAME_PHYSICSNODE_H
 #define SHIPGAME_PHYSICSNODE_H
-#include <raylib.h>
-#include <raymath.h>
-#include "node.h"
 
+#include "node.h"
+#include "global.h"
 
 class PhysicsNode : public Node {
     public:
