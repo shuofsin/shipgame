@@ -19,8 +19,6 @@ class PhysicsNode : public Node {
         Vector2 position{};
         Vector2 velocity{};
         Node parent;
-        void moveAndCollide(float deltaTime);
-        void moveAndSlide(float deltaTime);
 };
 
 

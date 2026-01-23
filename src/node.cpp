@@ -2,7 +2,8 @@
 // Created by shu on 1/14/26.
 //
 
-#include "global.h"
+#include "headers/global.h"
+#include "headers/node.h"
 
 /**
  * @brief Default constructor

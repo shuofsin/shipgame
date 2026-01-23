@@ -2,7 +2,7 @@
 // Created by shu on 1/21/26.
 //
 
-#include "physicsnode.h"
+#include "headers/physicsnode.h"
 
 PhysicsNode::PhysicsNode() {
     children = std::list<Node>();
@@ -27,15 +27,3 @@ Vector2 PhysicsNode::getPosition() const {
 Vector2 PhysicsNode::getVelocity() const {
     return velocity;
 }
-
-void PhysicsNode::moveAndCollide(const float deltaTime) {
-    // TODO - Collide with objects
-    position = Vector2Add(position, velocity * deltaTime);
-}
-
-void PhysicsNode::moveAndSlide(const float deltaTime) {
-    // TODO - Slide against objects
-    position = Vector2Add(position, velocity * deltaTime);
-}
-
-

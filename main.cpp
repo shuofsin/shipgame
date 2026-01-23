@@ -1,4 +1,4 @@
-#include "global.h"
+#include "src/headers/global.h"
 
 void debug(bool isDebug);
 
