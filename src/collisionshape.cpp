@@ -5,13 +5,15 @@
 #include "headers/global.h"
 #include "headers/collisionshape.h"
 
-CollisionShape::CollisionShape() : PhysicsNode() {
-    Shape shape = {};
+CollisionShape::CollisionShape() : Node() {
+    position = {0, 0};
+    shape = {};
     isDisabled = false; 
     isVisible = true;
 }
 
-CollisionShape::CollisionShape(Vector2 _position, Vector2 _velocity, Shape _shape) : PhysicsNode(_position, _velocity){
+CollisionShape::CollisionShape(Vector2 _position, Circle _shape) : Node() {
+    position = _position;
     shape = _shape;
     isDisabled = false;
     isVisible = true; 
@@ -31,4 +33,21 @@ void CollisionShape::setVisible(bool _isVisible) {
 
 bool CollisionShape::getVisible() {
     return isVisible; 
+}
+
+void CollisionShape::setPosition(Vector2 _position) {
+    position = _position; 
+    shape.x = position.x;
+    shape.y = position.y;
+}
+
+Vector2 CollisionShape::getPosition() {
+    return position;
+}
+
+void CollisionShape::draw() {
+    Node::draw();
+    if (!isVisible) return; 
+    Color color = (isDisabled ? Color({255, 255, 255, 100}) : Color({0, 255, 0, 110}));
+    DrawCircle(shape.x, shape.y, shape.radius, color);
 }

@@ -11,7 +11,7 @@ Player::Player() : KinematicBody() {
     angle = 0;
 }
 
-Player::Player(Vector2 _position, Vector2 _velocity, Shape _shape, Rectangle _texture, float _maxSpeed, float _turnSpeed) 
+Player::Player(Vector2 _position, Vector2 _velocity, Circle _shape, Rectangle _texture, float _maxSpeed, float _turnSpeed) 
 : KinematicBody(_position, _velocity, _shape) {
     texture = _texture; // TODO: Convert to image texture
     maxSpeed = _maxSpeed;
@@ -37,16 +37,18 @@ void Player::update(float deltaTime) {
     velocity.x = Lerp(velocity.x, dx, 1 - pow(0.5f, GetFrameTime() * 0.8f));
     velocity.y = Lerp(velocity.y, dy, 1 - pow(0.5f, GetFrameTime() * 0.8f));
 
-    if (velocity.x < 5 && !IsKeyDown(KEY_W)) velocity.x = 0;
-    if (velocity.y < 5 && !IsKeyDown(KEY_W)) velocity.y = 0;
+    if (!IsKeyDown(KEY_W) && velocity.x < 0.5 && velocity.y < 0.5) {
+        velocity.x = 0;
+        velocity.y = 0;
+    }
 
     KinematicBody::moveAndCollide(deltaTime);
 }
 
 void Player::draw() {
-    KinematicBody::draw();
-    
     // Draw player
     texture = {position.x, position.y, texture.width, texture.height};
     DrawRectanglePro(texture, {texture.width / 2, texture.height / 2}, angle, WHITE);
+
+    KinematicBody::draw();
 }

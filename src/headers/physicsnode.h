@@ -13,7 +13,9 @@ class PhysicsNode : public Node {
         PhysicsNode();
         PhysicsNode(Vector2 _position, Vector2 _velocity);
         Node& getParent();
+        void setPosition(Vector2 _position);
         Vector2 getPosition() const;
+        void setVelocity(Vector2 _velocity);
         Vector2 getVelocity() const;
     protected:
         Vector2 position{};

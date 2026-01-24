@@ -16,12 +16,12 @@
 class Node {
     public:
         Node();
-        void init();
-        void update(float deltaTime);
-        void draw();
-        std::list<Node>& getChildren();
+        virtual void init();
+        virtual void update(float deltaTime);
+        virtual void draw();
+        std::list<Node*>& getChildren();
     protected:
-        std::list<Node> children;
+        std::list<Node*> children;
 };
 
 #endif //SHIPGAME_NODE_H

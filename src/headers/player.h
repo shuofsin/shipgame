@@ -11,10 +11,10 @@
 class Player : public KinematicBody {
     public:
         Player();
-        Player(Vector2 _position, Vector2 _velocity, Shape _shape, Rectangle _texture, float _maxSpeed, float _turnSpeed);
-        void init();
-        void update(float deltaTime);
-        void draw();
+        Player(Vector2 _position, Vector2 _velocity, Circle _shape, Rectangle _texture, float _maxSpeed, float _turnSpeed);
+        void init() override;
+        void update(float deltaTime) override;
+        void draw() override;
     private:
         Rectangle texture;
         float maxSpeed;

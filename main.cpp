@@ -11,7 +11,7 @@ int main() {
     int windowHeight = 480;
     Color backgroundColor = DARKBLUE;
     Player *player = new Player({windowWidth / 2, windowHeight / 2}, {0, 0}, 
-                                {.c = {windowWidth / 2, windowHeight / 2}}, {windowWidth / 2, windowHeight / 2, 40, 20}, 100, 100);
+                                {windowWidth / 2, windowHeight / 2, 25}, {windowWidth / 2, windowHeight / 2, 40, 20}, 100, 100);
 
 
     // Init

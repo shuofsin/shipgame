@@ -10,16 +10,12 @@
 #include <raymath.h>
 #include <cstdio>
 #include <list>
+#include <any>
 
 typedef struct Circle {
     int x;
     int y;
     float radius;
 } Circle;
-
-typedef union Shape {
-    Circle c;
-    Rectangle r;
-} Shape;
 
 #endif //SHIPGAME_GLOBAL_H

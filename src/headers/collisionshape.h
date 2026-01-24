@@ -6,20 +6,24 @@
 #define SHIPGAME_COLLISIONSHAPE_H
 
 #include "global.h"
-#include "physicsnode.h"
+#include "node.h"
 
-class CollisionShape : public PhysicsNode {
+class CollisionShape : public Node {
     public: 
         CollisionShape();
-        CollisionShape(Vector2 _position, Vector2 _velocity, Shape _shape);
+        CollisionShape(Vector2 _position, Circle _shape);
         void setDisabled(bool _isDisabled);
         bool getDisabled();
         void setVisible(bool _isVisible);
         bool getVisible();
+        void setPosition(Vector2 _position);
+        Vector2 getPosition();
+        void draw() override;
     private: 
+        Vector2 position;
         bool isDisabled;
         bool isVisible;
-        Shape shape; 
+        Circle shape; 
 };
 
 

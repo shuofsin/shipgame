@@ -6,10 +6,12 @@
 
 KinematicBody::KinematicBody() : PhysicsNode() {
     collisionShape = new CollisionShape();
+    children.push_back(collisionShape);
 }
 
-KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Shape _shape) : PhysicsNode(_position, _velocity) {
-    collisionShape = new CollisionShape(_position, _velocity, _shape);
+KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Circle _shape) : PhysicsNode(_position, _velocity) {
+    collisionShape = new CollisionShape(_position, _shape);
+    children.push_back(collisionShape);
 }
 
 void KinematicBody::moveAndCollide(float deltaTime) {
@@ -20,6 +22,9 @@ void KinematicBody::moveAndCollide(float deltaTime) {
     // NOTE: Not sure if we want to do deltaTime here, or in update functions. Probably update? 
     position.x += velocity.x * deltaTime;
     position.y += velocity.y * deltaTime;
+
+    // Check collisions
+    collisionShape->setPosition(position);
 }
 
 CollisionShape* KinematicBody::getCollisionShape() {
