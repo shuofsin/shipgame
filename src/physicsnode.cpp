@@ -6,8 +6,8 @@
 
 PhysicsNode::PhysicsNode() {
     children = std::list<Node>();
-    position = Vector2();
-    velocity = Vector2();
+    position = Vector2Zero();
+    velocity = Vector2Zero();
 }
 
 PhysicsNode::PhysicsNode(const Vector2 _position, const Vector2 _velocity) {

@@ -5,22 +5,20 @@
 #include "headers/global.h"
 #include "headers/collisionshape.h"
 
-CollisionShape::CollisionShape() {
-    PhysicsNode::PhysicsNode();
-    Shape shape = NULL;
+CollisionShape::CollisionShape() : PhysicsNode() {
+    Shape shape = {};
     isDisabled = true; 
 }
 
-CollisionShape::CollisionShape(Vector2 _velocity, Vector2 _position, Shape _shape) {
-    PhysicsNode::PhysicsNode(_velocity, _position);
+CollisionShape::CollisionShape(Vector2 _velocity, Vector2 _position, Shape _shape) : PhysicsNode(_velocity, _position){
     shape = _shape;
     isDisabled = false;
 }
 
-void setDisabled(bool _isDisabled) {
+void CollisionShape::setDisabled(bool _isDisabled) {
     isDisabled = _isDisabled;
 }
 
-bool getDisabled() {
+bool CollisionShape::getDisabled() {
     return isDisabled; 
 }
