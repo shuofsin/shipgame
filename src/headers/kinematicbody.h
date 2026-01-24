@@ -12,7 +12,7 @@
 class KinematicBody : public PhysicsNode {
     public:
         KinematicBody();
-        KinematicBody(Vector2 _velocity, Vector2 _position, Shape _shape);
+        KinematicBody(Vector2 _position, Vector2 _velocity, Shape _shape);
         void moveAndCollide(float deltaTime);
         CollisionShape* getCollisionShape();
     private:

@@ -7,12 +7,14 @@
 
 CollisionShape::CollisionShape() : PhysicsNode() {
     Shape shape = {};
-    isDisabled = true; 
+    isDisabled = false; 
+    isVisible = true;
 }
 
-CollisionShape::CollisionShape(Vector2 _velocity, Vector2 _position, Shape _shape) : PhysicsNode(_velocity, _position){
+CollisionShape::CollisionShape(Vector2 _position, Vector2 _velocity, Shape _shape) : PhysicsNode(_position, _velocity){
     shape = _shape;
     isDisabled = false;
+    isVisible = true; 
 }
 
 void CollisionShape::setDisabled(bool _isDisabled) {
@@ -21,4 +23,12 @@ void CollisionShape::setDisabled(bool _isDisabled) {
 
 bool CollisionShape::getDisabled() {
     return isDisabled; 
+}
+
+void CollisionShape::setVisible(bool _isVisible) {
+    isVisible = _isVisible;
+}
+
+bool CollisionShape::getVisible() {
+    return isVisible; 
 }

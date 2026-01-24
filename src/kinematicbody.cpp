@@ -8,8 +8,8 @@ KinematicBody::KinematicBody() : PhysicsNode() {
     collisionShape = new CollisionShape();
 }
 
-KinematicBody::KinematicBody(Vector2 _velocity, Vector2 _position, Shape _shape) : PhysicsNode(_velocity, _position) {
-    collisionShape = new CollisionShape(_velocity, _position, _shape);
+KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Shape _shape) : PhysicsNode(_position, _velocity) {
+    collisionShape = new CollisionShape(_position, _velocity, _shape);
 }
 
 void KinematicBody::moveAndCollide(float deltaTime) {

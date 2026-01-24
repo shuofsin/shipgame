@@ -10,7 +10,7 @@ PhysicsNode::PhysicsNode() {
     velocity = Vector2Zero();
 }
 
-PhysicsNode::PhysicsNode(const Vector2 _position, const Vector2 _velocity) {
+PhysicsNode::PhysicsNode(Vector2 _position, Vector2 _velocity) {
     children = std::list<Node>();
     position = _position;
     velocity = _velocity;

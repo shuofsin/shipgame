@@ -11,11 +11,14 @@
 class CollisionShape : public PhysicsNode {
     public: 
         CollisionShape();
-        CollisionShape(Vector2 _velocity, Vector2 _position, Shape _shape);
+        CollisionShape(Vector2 _position, Vector2 _velocity, Shape _shape);
         void setDisabled(bool _isDisabled);
         bool getDisabled();
+        void setVisible(bool _isVisible);
+        bool getVisible();
     private: 
         bool isDisabled;
+        bool isVisible;
         Shape shape; 
 };
 

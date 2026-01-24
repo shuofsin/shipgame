@@ -1,6 +1,6 @@
 # ShipGame
 
 ## ToDo
-- Figure out mechanic
-- Sliding world map 
-- Window resizing
+- Write Draw function for collisions
+- Reorganize file structure
+- Write database
