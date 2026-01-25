@@ -12,7 +12,6 @@ class PhysicsNode : public Node {
     public:
         PhysicsNode();
         PhysicsNode(Vector2 _position, Vector2 _velocity);
-        Node& getParent();
         void setPosition(Vector2 _position);
         Vector2 getPosition() const;
         void setVelocity(Vector2 _velocity);
@@ -20,7 +19,6 @@ class PhysicsNode : public Node {
     protected:
         Vector2 position{};
         Vector2 velocity{};
-        Node parent;
 };
 
 

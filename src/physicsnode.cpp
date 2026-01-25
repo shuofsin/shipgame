@@ -14,10 +14,6 @@ PhysicsNode::PhysicsNode(Vector2 _position, Vector2 _velocity) : Node() {
     velocity = _velocity;
 }
 
-Node& PhysicsNode::getParent() {
-    return parent;
-}
-
 void PhysicsNode::setPosition(Vector2 _position) {
     position = _position;
 }

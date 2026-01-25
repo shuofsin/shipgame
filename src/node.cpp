@@ -11,6 +11,7 @@
  */
 Node::Node() {
     children = std::list<Node*>();
+    parent = NULL;
 }
 
 /**
@@ -46,4 +47,23 @@ void Node::draw() {
  */
 std::list<Node*>& Node::getChildren() {
     return children;
+}
+
+void Node::addChild(Node *child) {
+    children.push_back(child);
+    child->setParent(this);
+}
+
+void Node::removeChild(Node *child) {
+    int size_before = children.size();
+    children.remove(child);
+    if (size_before == children.size() - 1) child->setParent(NULL);
+}
+
+Node *Node::getParent() {
+    return parent;
+}
+
+void Node::setParent(Node *_parent) {
+    parent = _parent;
 }

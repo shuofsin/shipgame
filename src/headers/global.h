@@ -10,7 +10,6 @@
 #include <raymath.h>
 #include <cstdio>
 #include <list>
-#include <any>
 
 typedef struct Circle {
     int x;

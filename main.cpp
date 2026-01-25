@@ -9,24 +9,28 @@ int main() {
     // Declarations
     int windowWidth = 640;
     int windowHeight = 480;
-    Color backgroundColor = DARKBLUE;
+    Color backgroundColor = DARKBLUE;   
+
+    Node *root = new Node();
     Player *player = new Player({windowWidth / 2, windowHeight / 2}, {0, 0}, 
                                 {windowWidth / 2, windowHeight / 2, 25}, {windowWidth / 2, windowHeight / 2, 40, 20}, 100, 100);
+    root->addChild(player);
 
 
     // Init
     InitWindow(windowWidth, windowHeight, "ship game");
-    player->init();
+    root->init();
 
     // Loop
     while (WindowShouldClose() == false) {
         // Update
-        player->update(GetFrameTime());
+        root->update(GetFrameTime());
 
         // Draw
         BeginDrawing();
         ClearBackground(backgroundColor);
-        player->draw();
+        
+        root->draw();
 
         EndDrawing();
     }

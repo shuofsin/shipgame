@@ -20,8 +20,13 @@ class Node {
         virtual void update(float deltaTime);
         virtual void draw();
         std::list<Node*>& getChildren();
+        void addChild(Node *child);
+        void removeChild(Node *child);
+        Node *getParent();
+        void setParent(Node *_parent);
     protected:
         std::list<Node*> children;
+        Node *parent;
 };
 
 #endif //SHIPGAME_NODE_H
