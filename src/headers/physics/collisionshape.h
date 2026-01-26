@@ -5,8 +5,7 @@
 #ifndef SHIPGAME_COLLISIONSHAPE_H
 #define SHIPGAME_COLLISIONSHAPE_H
 
-#include "global.h"
-#include "node.h"
+#include "../globals/node.h"
 
 class CollisionShape : public Node {
     public: 

@@ -2,8 +2,7 @@
 // Created by shu on 1/22/26.
 //
 
-#include "headers/global.h"
-#include "headers/collisionshape.h"
+#include "../headers/physics/collisionshape.h"
 
 CollisionShape::CollisionShape() : Node() {
     position = {0, 0};

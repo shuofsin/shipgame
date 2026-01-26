@@ -2,8 +2,8 @@
 // Created by shu on 1/22/26.
 //
 
-#ifndef SHIPGAME_GLOBAL_H
-#define SHIPGAME_GLOBAL_H
+#ifndef SHIPGAME_LIBGLOBAL_H
+#define SHIPGAME_LIBGLOBAL_H
 
 #include <complex>
 #include <raylib.h>
@@ -17,4 +17,4 @@ typedef struct Circle {
     float radius;
 } Circle;
 
-#endif //SHIPGAME_GLOBAL_H
+#endif //SHIPGAME_LIBGLOBAL_H

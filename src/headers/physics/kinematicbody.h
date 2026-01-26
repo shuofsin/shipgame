@@ -5,7 +5,6 @@
 #ifndef SHIPGAME_KINEMATICBODY_H
 #define SHIPGAME_KINEMATICBODY_H
 
-#include "global.h"
 #include "physicsnode.h"
 #include "collisionshape.h"
 

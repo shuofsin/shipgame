@@ -5,7 +5,7 @@
 #ifndef SHIPGAME_NODE_H
 #define SHIPGAME_NODE_H
 
-#include "global.h"
+#include "libglobal.h"
 
 /**
  * @class Node

@@ -2,7 +2,7 @@
 // Created by shu on 1/21/26.
 //
 
-#include "headers/physicsnode.h"
+#include "../headers/physics/physicsnode.h"
 
 PhysicsNode::PhysicsNode() : Node () {
     position = Vector2Zero();

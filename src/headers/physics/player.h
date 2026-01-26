@@ -5,7 +5,6 @@
 #ifndef SHIPGAME_PLAYER_H
 #define SHIPGAME_PLAYER_H
 
-#include "global.h"
 #include "kinematicbody.h"
 
 class Player : public KinematicBody {

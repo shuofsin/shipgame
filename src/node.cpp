@@ -2,9 +2,7 @@
 // Created by shu on 1/14/26.
 //
 
-#include "headers/global.h"
 #include "headers/node.h"
-#include "headers/collisionshape.h"
 
 /**
  * @brief Default constructor

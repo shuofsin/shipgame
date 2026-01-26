@@ -2,7 +2,7 @@
 // Created by shu on 1/21/26.
 //
 
-#include "headers/kinematicbody.h"
+#include "../headers/physics/kinematicbody.h"
 
 KinematicBody::KinematicBody() : PhysicsNode() {
     collisionShape = new CollisionShape();
