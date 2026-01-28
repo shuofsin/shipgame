@@ -11,10 +11,4 @@
 #include <cstdio>
 #include <list>
 
-typedef struct Circle {
-    int x;
-    int y;
-    float radius;
-} Circle;
-
 #endif //SHIPGAME_LIBGLOBAL_H

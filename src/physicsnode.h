@@ -5,7 +5,7 @@
 #ifndef SHIPGAME_PHYSICSNODE_H
 #define SHIPGAME_PHYSICSNODE_H
 
-#include "../globals/node.h"
+#include "node.h"
 
 class PhysicsNode : public Node {
     public:

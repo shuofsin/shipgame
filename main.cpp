@@ -1,4 +1,5 @@
-#include "headers/globals/includes.h"
+#include "src/includes.h"
+#include "src/globalvars.h"
 
 void debug(bool isDebug);
 
@@ -7,9 +8,7 @@ void init();
 int main() {
 
     // Declarations
-    int windowWidth = 640;
-    int windowHeight = 480;
-    Color backgroundColor = DARKBLUE;   
+     
 
     Node *root = new Node();
     Player *player = new Player({windowWidth / 2, windowHeight / 2}, {0, 0}, 

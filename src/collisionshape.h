@@ -5,7 +5,8 @@
 #ifndef SHIPGAME_COLLISIONSHAPE_H
 #define SHIPGAME_COLLISIONSHAPE_H
 
-#include "../globals/node.h"
+#include "node.h"
+#include "structglobal.h"
 
 class CollisionShape : public Node {
     public: 
@@ -18,6 +19,7 @@ class CollisionShape : public Node {
         void setPosition(Vector2 _position);
         Vector2 getPosition();
         void draw() override;
+        Circle getShape();
     private: 
         Vector2 position;
         bool isDisabled;

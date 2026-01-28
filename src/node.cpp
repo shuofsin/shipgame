@@ -2,7 +2,7 @@
 // Created by shu on 1/14/26.
 //
 
-#include "headers/node.h"
+#include "node.h"
 
 /**
  * @brief Default constructor

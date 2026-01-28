@@ -2,7 +2,7 @@
 // Created by shu 1/24/26
 //
 
-#include "../headers/physics/player.h"
+#include "player.h"
 
 Player::Player() : KinematicBody() {
     texture = {};

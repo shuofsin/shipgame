@@ -2,7 +2,7 @@
 // Created by shu on 1/22/26.
 //
 
-#include "../headers/physics/collisionshape.h"
+#include "collisionshape.h"
 
 CollisionShape::CollisionShape() : Node() {
     position = {0, 0};
@@ -49,4 +49,8 @@ void CollisionShape::draw() {
     if (!isVisible) return; 
     Color color = (isDisabled ? Color({255, 255, 255, 100}) : Color({0, 255, 0, 110}));
     DrawCircle(shape.x, shape.y, shape.radius, color);
+}
+
+Circle CollisionShape::getShape() {
+    return shape;
 }
