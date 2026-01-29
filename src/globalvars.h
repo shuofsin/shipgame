@@ -2,22 +2,19 @@
 // created by shu 1/27/26
 //
 
-#ifndef SHIPGAME_PTRGLOBAL_H
-#define SHIPGAME_PTRGLOBAL_H
+#ifndef SHIPGAME_GLOBALVARS_H
+#define SHIPGAME_GLOBALVARS_H
 
 #include "libs.h"
 #include "node.h"
+#include "globalvars.h"
 
 int windowWidth = 640;
 int windowHeight = 480;
+int spacing = 40;
+
 Color backgroundColor = DARKBLUE;  
 
-int spacing = 40;
-int numX = windowWidth / spacing;
-int numY = windowHeight / spacing; 
-const int listSize = numX * numY;
-
-std::list<Node*> *collisionGridList = new std::list<Node*>[numX * numY];
 Node *collisionManager;
 
-#endif //SHIPGAME_PTRGLOBAL_H
+#endif //SHIPGAME_GLOBALVARS_H

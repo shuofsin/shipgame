@@ -4,38 +4,30 @@
 
 #include "collisionmanager.h"
 
+extern Node *collisionManager;
+extern int windowWidth;
+extern int windowHeight;
+extern int spacing;
+
 CollisionManager::CollisionManager() {
+    numX = windowWidth / spacing;
+    numY = windowHeight / spacing; 
+    const int listSize = numX * numY;
+    collisionGridList = new std::list<Node*>[numX * numY];
     collisionManager = this; 
 }
 
-void CollisionManager::setCell(CollisionShape *collisionShape) {
-    int index = calculateListIndex(collisionShape->getPosition().x, collisionShape->getPosition().y);
+void CollisionManager::setCell(int x, int y, Node *collisionShape) {
+    int index = calculateListIndex(x, y);
     collisionGridList[index].push_back(collisionShape);
 }
 
-std::list<Node*> *CollisionManager::collidingNeighbours(CollisionShape *collisionShape) {
-    int index = calculateListIndex(collisionShape->getPosition().x, collisionShape->getPosition().y);
-    std::list<Node*> *collidingList = new std::list<Node*>();
-    for (Node *shape : collisionGridList[index]) {
-        CollisionShape *otherShape = (CollisionShape*)shape;
-        if (otherShape == collisionShape)
-            continue;
-
-
-
-        Vector2 centerOne = {collisionShape->getShape().x, collisionShape->getShape().y};
-        float radiusOne = collisionShape->getShape().radius;
-        Vector2 centerTwo = {otherShape->getShape().x, otherShape->getShape().y};
-        float radiusTwo = collisionShape->getShape().radius;
-        if (CheckCollisionCircles(centerOne, radiusOne, centerTwo, radiusTwo)) {
-            collidingList->push_back(shape);
-        }
-    }
-
-    return collidingList;
+std::list<Node*> *CollisionManager::collidingNeighbours(int x, int y) {
+    int index = calculateListIndex(x, y);
+    return &collisionGridList[index];
 }
 
 
-int calculateListIndex(int x, int y) {
+int CollisionManager::calculateListIndex(int x, int y) {
     return x * numY + y;
 }

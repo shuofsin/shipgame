@@ -3,14 +3,15 @@
 //
 
 #include "managernode.h"
-#include "collisionshape.h"
-#include "globalvars.h"
 
 class CollisionManager : public Node {
     public: 
         CollisionManager();
-        void setCell(CollisionShape *collisionShape);
-        std::list<Node*> *collidingNeighbours(CollisionShape *collisionShape);
+        void setCell(int x, int y, Node *collisionShape);
+        std::list<Node*> *collidingNeighbours(int x, int y);
     private:
         int calculateListIndex(int x, int y); 
+        std::list<Node*> *collisionGridList;
+        int numX;
+        int numY;
 };
