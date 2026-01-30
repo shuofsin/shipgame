@@ -7,6 +7,9 @@
 
 #include "physicsnode.h"
 #include "collisionshape.h"
+#include "collisionmanager.h"
+
+extern Node* collisionManager;
 
 class KinematicBody : public PhysicsNode {
     public:

@@ -18,11 +18,15 @@ CollisionManager::CollisionManager() {
 }
 
 void CollisionManager::setCell(int x, int y, Node *collisionShape) {
+    int size = sizeof(collisionGridList) / sizeof(std::list<Node*>);
+    for (int i = 0; i < size; i++) {
+        collisionGridList[i].remove(collisionShape);
+    }
     int index = calculateListIndex(x, y);
     collisionGridList[index].push_back(collisionShape);
 }
 
-std::list<Node*> *CollisionManager::collidingNeighbours(int x, int y) {
+std::list<Node*> *CollisionManager::getNeighbours(int x, int y) {
     int index = calculateListIndex(x, y);
     return &collisionGridList[index];
 }

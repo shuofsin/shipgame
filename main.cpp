@@ -1,4 +1,5 @@
 #include "src/includes.h"
+#include "src/globalvars.h"
 
 // Data
 extern int windowWidth;

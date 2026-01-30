@@ -25,6 +25,19 @@ void KinematicBody::moveAndCollide(float deltaTime) {
 
     // Check collisions
     collisionShape->setPosition(position);
+
+    CollisionManager *manager = (CollisionManager*)collisionManager;
+
+    // Set index
+    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
+
+    // Get neighbours
+    auto neighbours = manager->getNeighbours(collisionShape->getPosition().x, collisionShape->getPosition().y);
+
+    // Check collisions
+    for (Node *it : neighbours) {
+        CollisionShape *neighbour = (CollisionShape*)it;
+    }
 }
 
 CollisionShape* KinematicBody::getCollisionShape() {

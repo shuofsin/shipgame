@@ -6,4 +6,3 @@
 #include "player.h"
 // Manager Nodes
 #include "managernode.h"
-#include "collisionmanager.h"

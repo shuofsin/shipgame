@@ -7,7 +7,6 @@
 
 #include "libs.h"
 #include "node.h"
-#include "globalvars.h"
 
 int windowWidth = 640;
 int windowHeight = 480;
