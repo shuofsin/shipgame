@@ -9,6 +9,7 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <cstdio>
+#include <iostream>
 #include <list>
 #include <cmath>
 #include <vector>

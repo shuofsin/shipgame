@@ -16,22 +16,34 @@ CollisionManager::CollisionManager() {
     cellVolume = 16;
     collisionGridList = new Node**[listSize];
     for (int i = 0; i < listSize; i++) {
-        collisionGridList[i] = new Node*[cellVolume]; // Assuming more than 16 objects won't share a space
+        collisionGridList[i] = new Node*[cellVolume];
+        for (int j = 0; j < cellVolume; j++) {
+            collisionGridList[i][j] = nullptr;
+        }
     }
     collisionManager = this; 
 }
 
 void CollisionManager::setCell(int x, int y, Node *collisionShape) {
+    if (!collisionShape)
+        return;
+
     for (int i = 0; i < listSize; i++) {
         for (int j = 0; j < cellVolume; j++) {
             if (collisionGridList[i][j] == collisionShape)
-                collisionGridList[i][j] = NULL;
+                collisionGridList[i][j] = nullptr;
         }
     }
+
     int index = calculateListIndex(x, y);
+
+    if (index < 0 || index >= listSize)
+        return; 
+
     for (int j = 0; j < cellVolume; j++) {
-        if (collisionGridList[index][j] == NULL) {
-            collisionGridList[index][j] = collisionShape;
+        if (collisionGridList[index][j] == nullptr) {
+            collisionGridList[index][j] = collisionShape; //is not being set properly
+            std::cout << "Added shape at index (" << index << ", " << j << ")"  << "|" << collisionGridList[index][0] << "|"<< std::endl;
             break;
         } 
     }

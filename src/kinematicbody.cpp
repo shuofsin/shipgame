@@ -29,6 +29,7 @@ void KinematicBody::moveAndCollide(float deltaTime) {
     position.x += velocity.x * deltaTime;
     position.y += velocity.y * deltaTime;
 
+
     // Check collisions
     collisionShape->setPosition(position);
 
@@ -43,7 +44,7 @@ void KinematicBody::moveAndCollide(float deltaTime) {
     // Check collisions
     for (int i = 0; i < manager->getCellVolume(); i++) {
         CollisionShape *neighbour = (CollisionShape*)neighbours[i];
-        if (neighbour == collisionShape)
+        if (neighbour == collisionShape || neighbour == nullptr)
             continue;
 
         Vector2 neighbourCenter = {neighbour->getPosition().x, neighbour->getPosition().y};
