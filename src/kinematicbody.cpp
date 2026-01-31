@@ -7,6 +7,7 @@
 KinematicBody::KinematicBody() : PhysicsNode() {
     collisionShape = new CollisionShape();
     children.push_back(collisionShape);
+
     CollisionManager *manager = (CollisionManager*)collisionManager;
     manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 }
@@ -14,6 +15,7 @@ KinematicBody::KinematicBody() : PhysicsNode() {
 KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Circle _shape) : PhysicsNode(_position, _velocity) {
     collisionShape = new CollisionShape(_position, _shape);
     children.push_back(collisionShape);
+
     CollisionManager *manager = (CollisionManager*)collisionManager;
     manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 }
@@ -36,11 +38,11 @@ void KinematicBody::moveAndCollide(float deltaTime) {
     manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 
     // Get neighbours
-    std::list<Node*> *neighbours = manager->getNeighbours(collisionShape->getPosition().x, collisionShape->getPosition().y);
+    Node** neighbours = manager->getNeighbours(collisionShape->getPosition().x, collisionShape->getPosition().y);
 
     // Check collisions
-    for (Node *it : *neighbours) {
-        CollisionShape *neighbour = (CollisionShape*)it;
+    for (int i = 0; i < manager->getCellVolume(); i++) {
+        CollisionShape *neighbour = (CollisionShape*)neighbours[i];
         if (neighbour == collisionShape)
             continue;
 

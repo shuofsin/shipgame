@@ -8,10 +8,14 @@ class CollisionManager : public Node {
     public: 
         CollisionManager();
         void setCell(int x, int y, Node *collisionShape);
-        std::list<Node*> *getNeighbours(int x, int y);
+        Node** getNeighbours(int x, int y);
+        int getListSize();
+        int getCellVolume();
     private:
         int calculateListIndex(int x, int y); 
-        std::list<Node*> *collisionGridList;
         int numX;
         int numY;
+        int listSize;
+        int cellVolume;
+        Node*** collisionGridList;
 };

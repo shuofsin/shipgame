@@ -11,5 +11,6 @@
 #include <cstdio>
 #include <list>
 #include <cmath>
+#include <vector>
 
 #endif //SHIPGAME_LIBGLOBAL_H
