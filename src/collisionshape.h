@@ -18,6 +18,8 @@ class CollisionShape : public Node {
         bool getVisible();
         void setPosition(Vector2 _position);
         Vector2 getPosition();
+        void setRadius(float _radius);
+        float getRadius();
         void draw() override;
         Circle getShape();
     private: 

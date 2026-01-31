@@ -44,6 +44,14 @@ Vector2 CollisionShape::getPosition() {
     return position;
 }
 
+void CollisionShape::setRadius(float _radius) {
+    shape.radius = _radius;
+}
+
+float CollisionShape::getRadius() {
+    return shape.radius;
+}
+
 void CollisionShape::draw() {
     Node::draw();
     if (!isVisible) return; 

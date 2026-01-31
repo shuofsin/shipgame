@@ -10,5 +10,6 @@
 #include <raymath.h>
 #include <cstdio>
 #include <list>
+#include <cmath>
 
 #endif //SHIPGAME_LIBGLOBAL_H

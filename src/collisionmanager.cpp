@@ -33,5 +33,7 @@ std::list<Node*> *CollisionManager::getNeighbours(int x, int y) {
 
 
 int CollisionManager::calculateListIndex(int x, int y) {
-    return x * numY + y;
+    int xi = std::floor(x / spacing);
+    int yi = std::floor(y / spacing);
+    return xi * numY + yi;
 }
