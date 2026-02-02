@@ -43,7 +43,6 @@ void CollisionManager::setCell(int x, int y, Node *collisionShape) {
     for (int j = 0; j < cellVolume; j++) {
         if (collisionGridList[index][j] == nullptr) {
             collisionGridList[index][j] = collisionShape; //is not being set properly
-            std::cout << "Added shape at index (" << index << ", " << j << ")"  << "|" << collisionGridList[index][0] << "|"<< std::endl;
             break;
         } 
     }

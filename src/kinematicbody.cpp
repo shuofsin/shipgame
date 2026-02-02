@@ -46,17 +46,29 @@ void KinematicBody::moveAndCollide(float deltaTime) {
         CollisionShape *neighbour = (CollisionShape*)neighbours[i];
         if (neighbour == collisionShape || neighbour == nullptr)
             continue;
-
+        
         Vector2 neighbourCenter = {neighbour->getPosition().x, neighbour->getPosition().y};
         Vector2 center = {collisionShape->getPosition().x, collisionShape->getPosition().x};
 
-        if (CheckCollisionCircles(neighbourCenter, neighbour->getRadius(), center, collisionShape->getRadius()))
-            collide(neighbourCenter.x, neighbourCenter.y);
+        float distanceBetweenCenters = Vector2Distance(neighbour->getPosition(), collisionShape->getPosition());
+        bool isColliding = (distanceBetweenCenters < (neighbour->getRadius() + collisionShape->getRadius()));
+
+        // TODO: Collisions between two kinematic bodies
+        // Currently, this works only for two cases: 
+        // - collision between a moving kinematic body and a static body
+        // - collision between two moving kinematic bodies
+        // Cases to account more
+        // - collision between a moving kinematic body and a stationary kinematic body
+        if (isColliding) {
+            this->collide(neighbourCenter.x, neighbourCenter.y);
+        }
+           
     }
 }
 
 void KinematicBody::collide(int x, int y) {
-    printf("Colliding!\n");
+    Vector2 collisionVector = Vector2Subtract(position, {x, y});
+    velocity = Vector2Add(velocity, collisionVector * 2);
 }
 
 CollisionShape* KinematicBody::getCollisionShape() {
