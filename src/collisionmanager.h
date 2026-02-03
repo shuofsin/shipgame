@@ -7,7 +7,7 @@
 class CollisionManager : public Node {
     public: 
         CollisionManager();
-        void setCell(int x, int y, Node *collisionShape);
+        void setCell(int x, int y, float radius, Node *collisionShape);
         Node** getNeighbours(int x, int y);
         int getListSize();
         int getCellVolume();
