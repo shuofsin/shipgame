@@ -10,7 +10,7 @@
 
 int windowWidth = 640;
 int windowHeight = 480;
-int spacing = 40;
+int spacing = 40; // I have no idea how this works.
 
 Color backgroundColor = DARKBLUE;  
 

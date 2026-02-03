@@ -9,7 +9,7 @@ KinematicBody::KinematicBody() : PhysicsNode() {
     children.push_back(collisionShape);
 
     CollisionManager *manager = (CollisionManager*)collisionManager;
-    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape->getRadius(), collisionShape);
+    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 }
 
 KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Circle _shape) : PhysicsNode(_position, _velocity) {
@@ -17,7 +17,7 @@ KinematicBody::KinematicBody(Vector2 _position, Vector2 _velocity, Circle _shape
     children.push_back(collisionShape);
 
     CollisionManager *manager = (CollisionManager*)collisionManager;
-    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape->getRadius(), collisionShape);
+    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 }
 
 void KinematicBody::moveAndCollide(float deltaTime) {
@@ -36,10 +36,11 @@ void KinematicBody::moveAndCollide(float deltaTime) {
     CollisionManager *manager = (CollisionManager*)collisionManager;
 
     // Set index
-    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape->getRadius(), collisionShape);
+    manager->setCell(collisionShape->getPosition().x, collisionShape->getPosition().y, collisionShape);
 
     // Get neighbours
     Node** neighbours = manager->getNeighbours(collisionShape->getPosition().x, collisionShape->getPosition().y);
+    if (neighbours == NULL) return; 
 
     // Check collisions
     for (int i = 0; i < manager->getCellVolume(); i++) {
@@ -61,8 +62,7 @@ void KinematicBody::moveAndCollide(float deltaTime) {
         // - collision between a moving kinematic body and a stationary kinematic body
         if (isColliding) {
             this->collide(neighbourCenter.x, neighbourCenter.y);
-        }
-           
+        }  
     }
 }
 

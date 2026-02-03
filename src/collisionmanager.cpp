@@ -24,7 +24,7 @@ CollisionManager::CollisionManager() {
     collisionManager = this; 
 }
 
-void CollisionManager::setCell(int x, int y, float radius, Node *collisionShape) {
+void CollisionManager::setCell(int x, int y, Node *collisionShape) {
     if (!collisionShape)
         return;
 
@@ -35,31 +35,25 @@ void CollisionManager::setCell(int x, int y, float radius, Node *collisionShape)
         }
     }
 
-    int indices[5] = {
-        calculateListIndex(x, y),
-        calculateListIndex(x + radius, y),
-        calculateListIndex(x - radius, y),
-        calculateListIndex(x, y + radius),
-        calculateListIndex(x, y - radius)
-    };
+    int index = calculateListIndex(x, y);
 
-    for (int i = 0; i < 5; i++) {
-        if (indices[i] < 0 || indices[i] >= listSize)
-            continue;
-        for (int j = 0; j < cellVolume; j++) {
-            if (collisionGridList[indices[i]][j] == collisionShape)
-                break;
+    if (index < 0 || index >= listSize)
+        return; 
 
-            if (collisionGridList[indices[i]][j] == nullptr) {
-                collisionGridList[indices[i]][j] = collisionShape;
-                continue;
-            }
-        }
+    for (int j = 0; j < cellVolume; j++) {
+        if (collisionGridList[index][j] == nullptr) {
+            collisionGridList[index][j] = collisionShape; //is not being set properly
+            break;
+        } 
     }
 }
 
 Node** CollisionManager::getNeighbours(int x, int y) {
     int index = calculateListIndex(x, y);
+    
+    if (index >= listSize || index < 0)
+        return NULL;
+
     return collisionGridList[index];
 }
 

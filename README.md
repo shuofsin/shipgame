@@ -1,6 +1,5 @@
 # ShipGame
 
 ## ToDo
-- Reorganize file structure
-- Write database
-- Collision code 
+- Research how to do collisions better
+- Switch to a different language?
