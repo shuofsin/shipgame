@@ -6,6 +6,8 @@
 #define SHIPGAME_PHYSICSNODE_H
 
 #include "node.h"
+#include "collisionshape.h"
+#include "collisionmanager.h"
 
 class PhysicsNode : public Node {
     public:

@@ -8,9 +8,9 @@
 #include "libs.h"
 #include "node.h"
 
-int windowWidth = 640;
-int windowHeight = 480;
-int spacing = 40; // I have no idea how this works.
+int windowWidth = 500;
+int windowHeight = 500;
+int spacing = 500; // I have no idea how this works.
 
 Color backgroundColor = DARKBLUE;  
 

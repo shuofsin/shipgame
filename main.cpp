@@ -18,8 +18,8 @@ int main() {
                                 {windowWidth / 2, windowHeight / 2, 25}, {windowWidth / 2, windowHeight / 2, 40, 20}, 100, 100);
     root->addChild(player);
     
-    KinematicBody *testBody = new KinematicBody({windowWidth / 3 * 2, windowHeight / 2}, {0, 0}, {windowWidth / 3 * 2, windowHeight / 2, 25});
-    root->addChild(testBody);
+    StaticBody *testIsland = new StaticBody({windowWidth / 3 * 2, windowHeight / 2}, {windowWidth / 3 * 2, windowHeight / 2, 25});
+    root->addChild(testIsland);
     
 
     // Init

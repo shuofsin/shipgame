@@ -6,8 +6,6 @@
 #define SHIPGAME_KINEMATICBODY_H
 
 #include "physicsnode.h"
-#include "collisionshape.h"
-#include "collisionmanager.h"
 
 extern Node* collisionManager;
 
